@@ -7,9 +7,12 @@ let b:current_syntax = "knit"
 let s:cpo_save = &cpo
 set cpo&vim
 
-syn match   KnitOperator "[-*\"']"
+set iskeyword+=-
+
+syn match   KnitParens   "[(,)]"
+syn match   KnitOperator "[(,]-" contains=KnitParens
+syn match   KnitOperator "[*\"']"
 syn match   KnitBraces   "[{}]"
-syn match   KnitParens   "[()]"
 syn match   KnitAssign   "="
 syn match   KnitAlias    ":="
 syn match   KnitComment  ";.*$" contains=KnitTodo,@Spell
@@ -20,6 +23,7 @@ syn keyword KnitTodo     fixme note notes todo contained
 
 syn keyword KnitCommonKeywords knit purl marker
 syn match   KnitCommonKeywords "cast-on"
+syn match   KnitCommonKeywords "needle-selection"
 syn match   KnitCommonKeywords "cast-off"
 
 hi def link KnitOperator Operator
