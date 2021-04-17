@@ -12,7 +12,7 @@ syn match   KnitBraces   "[{}]"
 syn match   KnitParens   "[()]"
 syn match   KnitAssign   "="
 syn match   KnitAlias    ":="
-syn match   KnitComment  "'.*$" contains=KnitTodo,@Spell
+syn match   KnitComment  ";.*$" contains=KnitTodo,@Spell
 syn keyword KnitType     cm mm inches
 syn keyword KnitParens   ( )
 syn keyword KnitTodo     FIXME NOTE NOTES TODO XXX contained
