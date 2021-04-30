@@ -20,7 +20,7 @@ func GetKnitIndent(lnum)
   let plnum = prevnonblank(a:lnum - 1)
   if plnum == 0 | return 0 | endif
   let ind = indent(plnum)
-  if getline(a:lnum) =~ '^\s*}$'
+  if getline(a:lnum) =~ '^\s*}.*$'
     return ind - shiftwidth()
   endif
   if getline(plnum) =~ '^.*{$'
