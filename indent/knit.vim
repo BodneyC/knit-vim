@@ -23,8 +23,11 @@ func GetKnitIndent(lnum)
   if getline(a:lnum) =~ '^\s*}.*$'
     return ind - shiftwidth()
   endif
-  if getline(plnum) =~ '^.*{$'
-    return ind + shiftwidth()
+  let line = getline(plnum)
+  if line =~ '^.*{$'
+    let prefix_len = strlen(matchstr(line, '^[0-9]\+\(([^)]*)\)\?:\s*'))
+    echom prefix_len
+    return ind + shiftwidth() + prefix_len
   endif
   return ind
 endfunc
